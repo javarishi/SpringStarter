@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd"
+		default-lazy-init="true"
+		default-init-method="startUp" 
+		default-destroy-method="shutdown">
+		
+		<bean name="clientService" 
+				class="com.h2k.spring.factory.ClientService" 
+				factory-method="getInstance">
+		</bean>
+		
+		<bean name="insuranceCheck" 
+				class="com.h2k.spring.factory.InsuranceRule" 
+				factory-bean="ruleFactory"
+				factory-method="getRule">
+		</bean>
+		
+		<bean name="ruleFactory" class="com.h2k.spring.factory.RuleFactory">
+			<property name="param" value="INS" />
+		</bean>
+		
+</beans>

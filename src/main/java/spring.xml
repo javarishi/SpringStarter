@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd"
+		default-lazy-init="true">
+		
+		<bean name="doctor" class="com.h2k.spring.Doctor" lazy-init="true">
+			<constructor-arg name="license" value="DGA1234" />
+			<property name="doctorName" value="RAJIV MISRA" />
+			<property name="speciality" value="NURO-SURGON" />
+		</bean>
+		
+		<bean name="word" class="com.h2k.spring.MSWord">
+			<constructor-arg name="clipArt" ref="artGallery" />
+			<property name="spellcheck" ref="spellCheckBeanIndex" />
+		</bean>
+		
+		<bean name="artGallery" class="com.h2k.spring.ArtGallry">
+			<constructor-arg name="artName" value="BrowserIcon" />
+		</bean>
+		
+		
+		<!-- Constructor DI Simple example with Bean Name -->
+		<bean name="spellCheckBean" class="com.h2k.spring.SpellChecker">
+			<constructor-arg name="arg" value="100" />
+			<constructor-arg name="lang" value="English" />
+		</bean>
+		
+		<!-- Constructor DI can be possible with type of argument -->
+		<bean name="spellCheckBeanType" class="com.h2k.spring.SpellChecker">
+			<constructor-arg type="int" value="100" />
+			<constructor-arg type="java.lang.String" value="English" />
+		</bean>
+		
+		<!-- Constructor DI can be possible with index of argument -->
+		<bean name="spellCheckBeanIndex" class="com.h2k.spring.SpellChecker">
+			<constructor-arg index="1" value="1000" />
+			<constructor-arg index="0" value="Spanish" />
+		</bean>
+</beans>

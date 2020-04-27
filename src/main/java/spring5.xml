@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+		<bean name="account" class="com.h2k.spring.other.Account"
+			p:accountNumber="1000"
+			p:customerName="David Nix"
+			p:accountType="Checking"
+			p:branchName="Cumberland" />
+		
+		<bean id="companyInfo" abstract="true">
+			<property name="companyName" value="Best Buy Inc" />
+		</bean>
+		
+		<bean id="empBeanId" name="employee" class="com.h2k.spring.inheritance.Employee" parent="companyInfo">
+			<property name="empId" value="100" />
+			<property name="name" value="David" />
+		</bean>
+		
+		<bean name="manager" class="com.h2k.spring.inheritance.Manager"
+			parent="empBeanId">
+			<property name="designation" value="Manager" /> 
+		</bean>
+		
+		
+		<bean name="complex" class="com.h2k.spring.other.ComplexClass">	
+			<property name="props">
+				<props>
+					<prop key="admin">admin@h2kinfosys.com</prop>
+					<prop key="contact">training@h2kinfosys.com</prop>
+					<prop key="rishi">rishi.h2kinfosys@gmail.com</prop>
+				</props>
+			</property>
+			<property name="simpleList">
+				<list>
+					<value>Menu_1 : Courses</value>
+					<value>Menu_2 : Duration</value>
+					<value>Menu_3 : Sample Video</value>
+				</list>
+			</property>
+			<property name="courses">
+				<map>
+					<entry key="100" value="JAVA Course" />
+					<entry key="200" value="Python Course" />
+					<entry key="300" value="Testing Course" />
+					<entry key="400" value="Machine Learning Course" />
+				</map>
+			</property>
+			<property name="faculty">
+				<set>
+					<value>Rishi</value>
+					<value>Padma</value>
+					<value>Daniel</value>
+					<value>Arun</value>
+				</set>
+			</property>
+		
+		</bean>
+		
+		<bean class="com.h2k.spring.other.TestPostProcessors"/>
+		
+</beans>

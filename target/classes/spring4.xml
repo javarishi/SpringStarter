@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd"
+		default-init-method="startUp" 
+		default-destroy-method="shutdown">
+		
+		<!-- byName - maps the bean with exact same name
+			byType - Searches for same type -->
+		<bean name="word" class="com.h2k.spring.autowire.MSWord" autowire="constructor">
+		</bean>
+		
+		<bean name="spellcheck" class="com.h2k.spring.autowire.SpellChecker">
+			<constructor-arg name="lang" value="English" />
+		</bean>
+		
+		<bean name="spellcheckSpanish" class="com.h2k.spring.autowire.SpellChecker">
+			<constructor-arg name="lang" value="Spanish" />
+		</bean>
+		
+		<bean name="spellcheckHindi" class="com.h2k.spring.autowire.SpellChecker">
+			<constructor-arg name="lang" value="Hindi" />
+		</bean>   
+</beans>
